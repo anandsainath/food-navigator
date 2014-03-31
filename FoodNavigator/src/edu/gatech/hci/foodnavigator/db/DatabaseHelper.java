@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private final Context context;
 	private SQLiteDatabase db;
 
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 8;
 
 	private static final String DATABASE_NAME = "food_navigator.db";
 	private static final String DATABASE_PATH = "/data/data/edu.gatech.hci.foodnavigator/databases/";
@@ -54,29 +54,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String KEY_DESCRIPTION = "description";
 
 	/* CREATE TABLE STATEMENTS */
-	// private static final String CREATE_TBL_FOOD_INDEX = "CREATE TABLE "
-	// + TBL_FOOD_INDEX + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-	// + KEY_NAME + " TEXT" + ")";
-	//
-	// private static final String CREATE_TBL_FOOD_COUNTRY = "CREATE TABLE "
-	// + TBL_FOOD_COUNTRY + "(" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-	// + KEY_ID_COUNTRY + " INTEGER" + ")";
-	//
-	// private static final String CREATE_TBL_COUNTRY = "CREATE TABLE "
-	// + TBL_COUNTRY + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-	// + KEY_COUNTRY_NAME + " TEXT" + ")";
-	//
-	// private static final String CREATE_TBL_DESC_EN = "CREATE TABLE "
-	// + TBL_DESC_EN + "(" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-	// + KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
-	//
-	// private static final String CREATE_TBL_DESC_KO = "CREATE TABLE "
-	// + TBL_DESC_KO + "(" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-	// + KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
-	//
-	// private static final String CREATE_TBL_DESC_HI = "CREATE TABLE "
-	// + TBL_DESC_HI + "(" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-	// + KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
+	private static final String CREATE_TBL_FOOD_INDEX = "CREATE TABLE "
+			+ TBL_FOOD_INDEX + " (" + KEY_ID + " INTEGER PRIMARY KEY, "
+			+ KEY_NAME + " TEXT" + ")";
+
+	private static final String CREATE_TBL_FOOD_COUNTRY = "CREATE TABLE "
+			+ TBL_FOOD_COUNTRY + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY, "
+			+ KEY_ID_COUNTRY + " INTEGER" + ")";
+
+	private static final String CREATE_TBL_COUNTRY = "CREATE TABLE "
+			+ TBL_COUNTRY + " (" + KEY_ID + " INTEGER PRIMARY KEY,"
+			+ KEY_COUNTRY_NAME + " TEXT" + ")";
+
+	private static final String CREATE_TBL_DESC_EN = "CREATE TABLE "
+			+ TBL_DESC_EN + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
+			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
+
+	private static final String CREATE_TBL_DESC_KO = "CREATE TABLE "
+			+ TBL_DESC_KO + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
+			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
+
+	private static final String CREATE_TBL_DESC_HI = "CREATE TABLE "
+			+ TBL_DESC_HI + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
+			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
 
 	public static DatabaseHelper getInstance(Context context) {
 		Log.d(TAG, "~~~ In getInstance");
@@ -250,12 +250,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_FOOD_INDEX);
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_FOOD_COUNTRY);
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_COUNTRY);
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_DESC_EN);
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_DESC_KO);
-		// db.execSQL("DROP TABLE IF EXISTS " + CREATE_TBL_DESC_HI);
+
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_FOOD_INDEX);
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_FOOD_COUNTRY);
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_COUNTRY);
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_EN);
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_KO);
+		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_HI);
+		//
+		// sInstance = null;
+		// this.getInstance(context.getApplicationContext());
 
 		// create new tables
 		// onCreate(db);
