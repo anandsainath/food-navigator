@@ -4,5 +4,16 @@
     <string name="app_name">FoodNavigator</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="image">Image</string>
+    <string name="small_screen">Small Screen</string>
+    
+    <string name="usTitle">American</string>
+    <string name="usDesc">Burgers, Friers ..</string>
+    
+    <string name="inTitle">Indian</string>
+    <string name="inDesc">Curry, Samosa ..</string>
+    
+    <string name="krTitle">Korean</string>
+    <string name="krDesc">Ddukbokkie, Dakjug ..</string>
 
 </resources>

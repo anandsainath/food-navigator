@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:notworks="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
+    android:id="@+id/LL_ListContainer"
+    style="@style/Match"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/home_american"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="center"
+            android:layout_weight="0.3" >
+
+            <ImageView
+                style="@style/Wrap"
+                android:background="@drawable/ic_usa"
+                android:contentDescription="@string/image" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="left"
+            android:layout_weight="0.7"
+            android:orientation="vertical" >
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.18"
+                android:text="@string/usTitle"
+                android:textColor="@color/swatch_10"
+                notworks:textStyle="bold" />
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.14"
+                android:text="@string/usDesc"
+                android:textColor="@color/swatch_10" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_indian"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="center"
+            android:layout_weight="0.3" >
+
+            <ImageView
+                style="@style/Wrap"
+                android:background="@drawable/ic_india"
+                android:contentDescription="@string/image" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="left"
+            android:layout_weight="0.7"
+            android:orientation="vertical" >
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.18"
+                android:text="@string/inTitle"
+                android:textColor="@color/swatch_10"
+                notworks:textStyle="bold" />
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.14"
+                android:text="@string/inDesc"
+                android:textColor="@color/swatch_10" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/home_korean"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="center"
+            android:layout_weight="0.3" >
+
+            <ImageView
+                style="@style/Wrap"
+                android:background="@drawable/ic_korea"
+                android:contentDescription="@string/image" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/OWrap"
+            android:layout_gravity="left"
+            android:layout_weight="0.7"
+            android:orientation="vertical" >
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.18"
+                android:text="@string/krTitle"
+                android:textColor="@color/swatch_10"
+                notworks:textStyle="bold" />
+
+            <edu.gatech.hci.foodnavigator.widget.CustomTextView
+                style="@style/Text.14"
+                android:text="@string/krDesc"
+                android:textColor="@color/swatch_10" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

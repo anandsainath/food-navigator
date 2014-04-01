@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RL_MenuItemRoot"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/menu_row_height"
+    android:minHeight="@dimen/menu_row_height" >
+
+    <ImageView
+        android:id="@+id/row_icon"
+        android:layout_width="@dimen/menu_row_height"
+        android:layout_height="@dimen/menu_row_height"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/image"
+        android:padding="10dp" />
+
+    <edu.gatech.hci.foodnavigator.widget.CustomTextView
+        android:id="@+id/row_title"
+        style="@style/Text.16"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/row_icon"
+        android:padding="10dp"
+        android:textColor="@color/swatch_01" />
+
+    <ImageView
+        android:id="@+id/IV_PurchaseIndicator"
+        style="@style/Wrap"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/image"
+        android:visibility="gone" />
+
+</RelativeLayout>

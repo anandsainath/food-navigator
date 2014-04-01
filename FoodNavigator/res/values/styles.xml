@@ -1,20 +1,109 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="WrapMatch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="OWrap">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="OMatch">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="HomeListItem" parent="MatchWrap">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="AppInfoTitle" parent="Text.12">
+        <item name="android:gravity">left</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textColor">@color/swatch_10</item>
+    </style>
+
+    <style name="AppInfoDesc" parent="Text.12">
+        <item name="android:gravity">left</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textColor">@color/swatch_10</item>
+    </style>
+
+    <style name="Body" parent="Match">
+        <item name="android:background">@color/swatch_01</item>
+    </style>
+
+    <style name="Body.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Box" parent="Match">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="WeightedBox" parent="OWrap">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Text" parent="Wrap"></style>
+
+    <style name="Text.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Text.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Text.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.22">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Text.24">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Text.36">
+        <item name="android:textSize">36sp</item>
     </style>
 
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <color name="swatch_01">#FFFCDD</color>
+    <color name="swatch_02">#F6EAD2</color>
+    <color name="swatch_03">#F0DCB2</color>
+    <color name="swatch_04">#DFBC74</color>
+    <color name="swatch_05">#E0B254</color>
+    <color name="swatch_06">#C59E4C</color>
+    <color name="swatch_07">#AFA788</color>
+    <color name="swatch_08">#999999</color>
+    <color name="swatch_09">#333300</color>
+    <color name="swatch_10">#372809</color>
+    <color name="swatch_11">#666666</color>
+    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="pressed_flashcards">#CCDFBC74</color>
+</resources>

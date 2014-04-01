@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/HomeView"
+    style="@style/Match"
+    android:background="@color/swatch_01"
+    android:tag="@string/small_screen" >
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        style="@style/MatchWrap"
+        class="edu.gatech.hci.foodnavigator.ui.AppHomeFragment" />
+
+</ScrollView>
