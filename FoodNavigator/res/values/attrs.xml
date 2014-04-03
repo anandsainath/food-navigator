@@ -12,5 +12,12 @@
         <enum name="italic" value="2" />
         <enum name="bold_italic" value="3" />
     </attr>
+    
+    <declare-styleable name="ImageMap">
+		<attr name="map" format="string"/>
+        <attr name="fitImageToScreen" format="boolean"/>
+        <attr name="scaleFromOriginal" format="boolean"/>
+        <attr name="maxSizeFactor" format="float"/>
+	</declare-styleable>
 
 </resources>
