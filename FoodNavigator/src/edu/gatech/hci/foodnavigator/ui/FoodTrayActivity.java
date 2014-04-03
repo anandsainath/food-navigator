@@ -17,38 +17,37 @@
 package edu.gatech.hci.foodnavigator.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.utilities.ImageMap;
 
 public class FoodTrayActivity extends Activity {
 	ImageMap mImageMap;
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.food_activity);
-        
-        // find the image map in the view
-        mImageMap = (ImageMap)findViewById(R.id.map);
-	    mImageMap.setImageResource(R.drawable.american_table);
-        
-        // add a click handler to react when areas are tapped
-        mImageMap.addOnImageMapClickedHandler(new ImageMap.OnImageMapClickedHandler()
-        {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.food_activity);
+
+		// find the image map in the view
+		mImageMap = (ImageMap) findViewById(R.id.map);
+		mImageMap.setImageResource(R.drawable.american_table);
+
+		// add a click handler to react when areas are tapped
+		mImageMap.addOnImageMapClickedHandler(new ImageMap.OnImageMapClickedHandler() {
 			@Override
-			public void onImageMapClicked(int id, ImageMap imageMap)
-			{
-				// when the area is tapped, show the name in a 
+			public void onImageMapClicked(int id, ImageMap imageMap) {
+				// when the area is tapped, show the name in a
 				// text bubble
 				mImageMap.showBubble(id);
 			}
 
 			@Override
-			public void onBubbleClicked(int id)
-			{
+			public void onBubbleClicked(int id) {
 				// react to info bubble for area being tapped
+				startActivity(new Intent(FoodTrayActivity.this, FoodDetailsActivity.class));
 			}
 		});
-    }
+	}
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hci="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
+    style="@style/Match"
+    android:background="@color/swatch_01" >
+
+    <RelativeLayout style="@style/Match" >
+
+        <ImageView
+            android:id="@+id/IV_FoodImage"
+            style="@style/Wrap"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/mimosa" />
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_FoodName"
+            style="@style/Text.36"
+            android:layout_below="@id/IV_FoodImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="MIMOSA"
+            android:textColor="@color/swatch_10"
+            hci:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/IV_TTS"
+            style="@style/Wrap"
+            android:layout_below="@id/TV_FoodName"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_action_volume_up_black" />
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_FoodPronunciation"
+            style="@style/Text.24"
+            android:layout_below="@id/IV_TTS"
+            android:layout_centerHorizontal="true"
+            android:text="mi-mos-uh"
+            android:textColor="@color/swatch_10" />
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_FoodMeaning1"
+            style="@style/Text.24"
+            android:layout_below="@id/TV_FoodPronunciation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="संतरे का रस और शैम्पेन"
+            android:textColor="@color/swatch_10" />
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_FoodMeaning2"
+            style="@style/Text.24"
+            android:layout_below="@id/TV_FoodMeaning1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Orange juice and champagne"
+            android:textColor="@color/swatch_10" />
+    </RelativeLayout>
+
+</ScrollView>

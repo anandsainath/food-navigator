@@ -6,14 +6,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="image">Image</string>
     <string name="small_screen">Small Screen</string>
-    
     <string name="usTitle">American</string>
     <string name="usDesc">Burgers, Friers ..</string>
-    
     <string name="inTitle">Indian</string>
     <string name="inDesc">Curry, Samosa ..</string>
-    
     <string name="krTitle">Korean</string>
     <string name="krDesc">Ddukbokkie, Dakjug ..</string>
+    
+    <string name="TTS_NA_MSG">Pronunciation feature requires that you have a TextToSpeech Engine installed. Do you want to install it from Google Play Store ?</string>
+    <string name="CheckBoxString">Don\'t show this dialog again!</string>
 
 </resources>

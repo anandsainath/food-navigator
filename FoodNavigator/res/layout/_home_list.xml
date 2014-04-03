@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:notworks="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
+    xmlns:hci="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
     android:id="@+id/LL_ListContainer"
     style="@style/Match"
     android:orientation="vertical" >
@@ -33,7 +33,7 @@
                 style="@style/Text.18"
                 android:text="@string/usTitle"
                 android:textColor="@color/swatch_10"
-                notworks:textStyle="bold" />
+                hci:textStyle="bold" />
 
             <edu.gatech.hci.foodnavigator.widget.CustomTextView
                 style="@style/Text.14"
@@ -70,7 +70,7 @@
                 style="@style/Text.18"
                 android:text="@string/inTitle"
                 android:textColor="@color/swatch_10"
-                notworks:textStyle="bold" />
+                hci:textStyle="bold" />
 
             <edu.gatech.hci.foodnavigator.widget.CustomTextView
                 style="@style/Text.14"
@@ -107,7 +107,7 @@
                 style="@style/Text.18"
                 android:text="@string/krTitle"
                 android:textColor="@color/swatch_10"
-                notworks:textStyle="bold" />
+                hci:textStyle="bold" />
 
             <edu.gatech.hci.foodnavigator.widget.CustomTextView
                 style="@style/Text.14"
