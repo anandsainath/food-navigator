@@ -1,5 +1,6 @@
 package edu.gatech.hci.foodnavigator.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.BaseActivity;
@@ -32,5 +33,6 @@ public class HomeActivity extends BaseActivity implements AppHomeFragment.Callba
 			Toast.makeText(getApplicationContext(), R.string.krTitle, Toast.LENGTH_LONG).show();
 			break;
 		}
+		startActivity(new Intent(this, FoodTrayActivity.class));
 	}
 }
