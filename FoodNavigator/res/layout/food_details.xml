@@ -14,7 +14,7 @@
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_FoodName"
-            style="@style/Text.36"
+            style="@style/Text.24"
             android:layout_below="@id/IV_FoodImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
@@ -22,24 +22,26 @@
             android:textColor="@color/swatch_10"
             hci:textStyle="bold" />
 
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_FoodPronunciation"
+            style="@style/Text.20"
+            android:layout_below="@id/TV_FoodName"
+            android:layout_centerHorizontal="true"
+            android:text="mi-mos-uh"
+            android:layout_margin="8dp"
+            android:textColor="@color/swatch_10" />
+
         <ImageView
             android:id="@+id/IV_TTS"
             style="@style/Wrap"
-            android:layout_below="@id/TV_FoodName"
+            android:layout_alignBottom="@id/TV_FoodPronunciation"
             android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@id/TV_FoodPronunciation"
             android:src="@drawable/ic_action_volume_up_black" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodPronunciation"
-            style="@style/Text.24"
-            android:layout_below="@id/IV_TTS"
-            android:layout_centerHorizontal="true"
-            android:text="mi-mos-uh"
-            android:textColor="@color/swatch_10" />
-
-        <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_FoodMeaning1"
-            style="@style/Text.24"
+            style="@style/Text.20"
             android:layout_below="@id/TV_FoodPronunciation"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
@@ -48,9 +50,10 @@
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_FoodMeaning2"
-            style="@style/Text.24"
+            style="@style/Text.18"
             android:layout_below="@id/TV_FoodMeaning1"
             android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:text="Orange juice and champagne"
             android:textColor="@color/swatch_10" />

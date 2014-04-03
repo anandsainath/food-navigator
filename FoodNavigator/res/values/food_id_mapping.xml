@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="food_fried_egg">1</string>
+    <string name="food_omelet">2</string>
+    <string name="food_scrambled_egg">3</string>
+    <string name="food_deviled_egg">4</string>
+    <string name="food_bacon">5</string>
+    <string name="food_ham">6</string>
+    <string name="food_sausage">7</string>
+    <string name="food_scrapple">8</string>
+    <string name="food_spam">9</string>
+    <string name="food_steak">10</string>
+    <string name="food_grits">11</string>
+    <string name="food_oatmeal">12</string>
+    <string name="food_hash_brown">13</string>
+    <string name="food_mashed_potato">14</string>
+    <string name="food_fries">15</string>
+    <string name="food_bagel">16</string>
+    <string name="food_doughnut">17</string>
+    <string name="food_muffin">18</string>
+    <string name="food_pancake">19</string>
+    <string name="food_waffle">20</string>
+    <string name="food_orange_juice">21</string>
+    <string name="food_iced_tea">22</string>
+    <string name="food_mimosa">23</string>
+
+</resources>

@@ -33,14 +33,14 @@ public class HomeActivity extends BaseActivity implements
 			break;
 		case R.id.home_indian:
 			Toast.makeText(getApplicationContext(),
-					"Will be available soon at only $1.99!", Toast.LENGTH_LONG)
+					"Will be available soon at only $1.99!", Toast.LENGTH_SHORT)
 					.show();
 			// Toast.makeText(getApplicationContext(), R.string.inTitle,
 			// Toast.LENGTH_LONG).show();
 			break;
 		case R.id.home_korean:
 			Toast.makeText(getApplicationContext(),
-					"Will be available soon at only $1.99!", Toast.LENGTH_LONG)
+					"Will be available soon at only $1.99!", Toast.LENGTH_SHORT)
 					.show();
 			// Toast.makeText(getApplicationContext(), R.string.krTitle,
 			// Toast.LENGTH_LONG).show();
