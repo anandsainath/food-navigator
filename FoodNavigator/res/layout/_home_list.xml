@@ -5,6 +5,14 @@
     style="@style/Match"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/instruction"
+        style="@style/Wrap"
+        android:layout_margin="10dp"
+        android:text="Choose a type of cuisine"
+        android:textSize="14sp"
+        android:textColor="#000" />
+
     <LinearLayout
         android:id="@+id/home_american"
         style="@style/HomeListItem"
@@ -115,4 +123,5 @@
                 android:textColor="@color/swatch_10" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+</LinearLayout>
