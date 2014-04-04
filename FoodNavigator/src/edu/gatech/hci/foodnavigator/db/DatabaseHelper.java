@@ -4,15 +4,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 
-import edu.gatech.hci.foodnavigator.ui.model.Food;
+import android.app.SearchManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.provider.BaseColumns;
 import android.util.Log;
+import edu.gatech.hci.foodnavigator.ui.model.Food;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -41,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	/* FOOD_INDEX COLUMN NAMES */
 	private static final String KEY_ID_FOOD = KEY_ID;
-	private static final String KEY_NAME = "name";
+	public static final String COL_FOOD_NAME = "name";
 
 	/* FOOD_COUNTRY COLUMN NAMES */
 
@@ -52,31 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	/* DESCRIPTION (en, ko, hi, ...) COLUMN NAMES */
 	private static final String KEY_PRONUNCIATION = "pronunciation";
 	private static final String KEY_DESCRIPTION = "description";
-
-	/* CREATE TABLE STATEMENTS */
-	private static final String CREATE_TBL_FOOD_INDEX = "CREATE TABLE "
-			+ TBL_FOOD_INDEX + " (" + KEY_ID + " INTEGER PRIMARY KEY, "
-			+ KEY_NAME + " TEXT" + ")";
-
-	private static final String CREATE_TBL_FOOD_COUNTRY = "CREATE TABLE "
-			+ TBL_FOOD_COUNTRY + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY, "
-			+ KEY_ID_COUNTRY + " INTEGER" + ")";
-
-	private static final String CREATE_TBL_COUNTRY = "CREATE TABLE "
-			+ TBL_COUNTRY + " (" + KEY_ID + " INTEGER PRIMARY KEY,"
-			+ KEY_COUNTRY_NAME + " TEXT" + ")";
-
-	private static final String CREATE_TBL_DESC_EN = "CREATE TABLE "
-			+ TBL_DESC_EN + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
-
-	private static final String CREATE_TBL_DESC_KO = "CREATE TABLE "
-			+ TBL_DESC_KO + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
-
-	private static final String CREATE_TBL_DESC_HI = "CREATE TABLE "
-			+ TBL_DESC_HI + " (" + KEY_ID_FOOD + " INTEGER PRIMARY KEY,"
-			+ KEY_PRONUNCIATION + " TEXT, " + KEY_DESCRIPTION + " TEXT " + ")";
+	private static final HashMap<String, String> mColumnMap = buildColumnMap();
 
 	public static DatabaseHelper getInstance(Context context) {
 		Log.d(TAG, "~~~ In getInstance");
@@ -106,15 +86,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			Log.d(TAG, " ~~~~~ DB instance exists already");
 		}
 
-		// System.out.println("###############");
-		// System.out.println(CREATE_TBL_FOOD_INDEX);
-		// System.out.println(CREATE_TBL_COUNTRY);
-		// System.out.println(CREATE_TBL_FOOD_COUNTRY);
-		// System.out.println(CREATE_TBL_DESC_EN);
-		// System.out.println(CREATE_TBL_DESC_HI);
-		// System.out.println(CREATE_TBL_DESC_KO);
-
 		return sInstance;
+	}
+
+	/**
+	 * Builds a map for all columns that may be requested, which will be given
+	 * to the SQLiteQueryBuilder. This is a good way to define aliases for
+	 * column names, but must include all columns, even if the value is the key.
+	 * This allows the ContentProvider to request columns w/o the need to know
+	 * real column names and create the alias itself.
+	 */
+	private static HashMap<String, String> buildColumnMap() {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(COL_FOOD_NAME, COL_FOOD_NAME + " as " + SearchManager.SUGGEST_COLUMN_TEXT_1);
+		map.put(BaseColumns._ID, "rowid AS " + BaseColumns._ID);
+		map.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID, "rowid AS " + SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID);
+		map.put(SearchManager.SUGGEST_COLUMN_SHORTCUT_ID, "rowid AS " + SearchManager.SUGGEST_COLUMN_SHORTCUT_ID);
+		return map;
 	}
 
 	/**
@@ -170,8 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		try {
 			String myPath = DATABASE_PATH + DATABASE_NAME;
-			checkDB = SQLiteDatabase.openDatabase(myPath, null,
-					SQLiteDatabase.OPEN_READONLY);
+			checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
 		} catch (SQLiteException e) {
 
@@ -222,8 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		// Open the database
 		String myPath = DATABASE_PATH + DATABASE_NAME;
-		db = SQLiteDatabase.openDatabase(myPath, null,
-				SQLiteDatabase.OPEN_READONLY);
+		db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
 
 	}
 
@@ -239,30 +225,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
-		// db.execSQL(CREATE_TBL_FOOD_INDEX);
-		// db.execSQL(CREATE_TBL_FOOD_COUNTRY);
-		// db.execSQL(CREATE_TBL_COUNTRY);
-		// db.execSQL(CREATE_TBL_DESC_EN);
-		// db.execSQL(CREATE_TBL_DESC_KO);
-		// db.execSQL(CREATE_TBL_DESC_HI);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_FOOD_INDEX);
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_FOOD_COUNTRY);
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_COUNTRY);
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_EN);
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_KO);
-		// db.execSQL("DROP TABLE IF EXISTS " + TBL_DESC_HI);
-		//
-		// sInstance = null;
-		// this.getInstance(context.getApplicationContext());
-
-		// create new tables
-		// onCreate(db);
 
 	}
 
@@ -270,12 +236,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public Food getFood(int id, int country_id) {
 		Food food = new Food();
 		SQLiteDatabase db = this.getReadableDatabase();
-
-		String query = "SELECT _id, name, pronunciation, description FROM "
-				+ TBL_FOOD_INDEX + " NATURAL JOIN " + TBL_DESC_KO + ";";
+		String query = "SELECT _id, name, pronunciation, description FROM " + TBL_FOOD_INDEX + " NATURAL JOIN "
+				+ TBL_DESC_KO + ";";
 
 		Cursor cursor = db.rawQuery(query, null);
-
 		if (cursor.moveToFirst()) {
 			do {
 				food.setId(Integer.parseInt(cursor.getString(0)));
@@ -286,7 +250,70 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			} while (cursor.moveToNext());
 		}
 		db.close();
-
 		return food;
+	}
+
+	/**
+	 * Returns a Cursor over all foods that match the given query
+	 * 
+	 * @param query
+	 *            The string to search for
+	 * @param columns
+	 *            The columns to include, if null then all are included
+	 * @return Cursor over all foods that match, or null if none found.
+	 */
+	public Cursor getFoodMatches(String query, String[] columns) {
+		String selection = COL_FOOD_NAME + " LIKE ?";
+		String[] selectionArgs = new String[] { query + "%" };
+		// Functions.d("Before calling query function..");
+		return query(selection, selectionArgs, columns);
+	}
+
+	/**
+	 * Returns a Cursor positioned at the word specified by rowId
+	 * 
+	 * @param rowId
+	 *            id of food to retrieve
+	 * @param columns
+	 *            The columns to include, if null then all are included
+	 * @return Cursor positioned to matching food, or null if not found.
+	 */
+	public Cursor getFood(String rowId, String[] columns) {
+		String selection = "rowid = ?";
+		String[] selectionArgs = new String[] { rowId };
+		return query(selection, selectionArgs, columns);
+	}
+
+	/**
+	 * Performs a database query.
+	 * 
+	 * @param selection
+	 *            The selection clause
+	 * @param selectionArgs
+	 *            Selection arguments for "?" components in the selection
+	 * @param columns
+	 *            The columns to return
+	 * @return A Cursor over all rows matching the query
+	 */
+	private Cursor query(String selection, String[] selectionArgs, String[] columns) {
+		/*
+		 * The SQLiteBuilder provides a map for all possible columns requested
+		 * to actual columns in the database, creating a simple column alias
+		 * mechanism by which the ContentProvider does not need to know the real
+		 * column names
+		 */
+		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+		builder.setTables(TBL_FOOD_INDEX);
+		builder.setProjectionMap(mColumnMap);
+
+		Cursor cursor = builder.query(getReadableDatabase(), columns, selection, selectionArgs, null, null, null);
+
+		if (cursor == null) {
+			return null;
+		} else if (!cursor.moveToFirst()) {
+			cursor.close();
+			return null;
+		}
+		return cursor;
 	}
 }
