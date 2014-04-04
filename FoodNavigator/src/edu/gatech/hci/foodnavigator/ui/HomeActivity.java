@@ -34,7 +34,7 @@ public class HomeActivity extends BaseActivity implements AppHomeFragment.Callba
 	public void homeButtonClick(int resID) {
 		switch (resID) {
 		case R.id.home_american:
-			Toast.makeText(getApplicationContext(), R.string.usTitle, Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), R.string.usTitle, Toast.LENGTH_SHORT).show();
 			startActivity(new Intent(this, FoodTrayActivity.class));
 			break;
 		case R.id.home_indian:

@@ -50,6 +50,7 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 		tvLocalDesc = (TextView) findViewById(R.id.TV_FoodMeaning2);
 
 		/* grab foodId passed in the bundle */
+		// TODO: handle exception
 		int foodId = Integer.parseInt(getIntent().getStringExtra("foodId"));
 
 		// hardcoding countryId for testing

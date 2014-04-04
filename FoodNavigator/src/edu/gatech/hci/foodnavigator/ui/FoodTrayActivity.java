@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.utilities.ImageMap;
 
@@ -63,11 +64,19 @@ public class FoodTrayActivity extends Activity {
 						/* grab the foodId defined as in database */
 						String foodId = grabFoodIdByResId(id);
 
-						if (!foodId.equals("")) {
+						if (foodId.equals("")) {
+							String current = resName.replace(getPackageName()
+									+ ":id/food_", "");
+							Toast.makeText(getApplicationContext(),
+									"This content is coming soon: " + current,
+									Toast.LENGTH_SHORT).show();
+
+						} else {
 							// attach the foodId string in bundle
 							in.putExtra("foodId", foodId);
+							startActivity(in);
 						}
-						startActivity(in);
+
 					}
 				});
 	}
