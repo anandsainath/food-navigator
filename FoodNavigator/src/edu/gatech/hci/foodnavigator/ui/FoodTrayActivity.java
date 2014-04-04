@@ -48,38 +48,41 @@ public class FoodTrayActivity extends BaseActivity {
 						// when the area is tapped, show the name in a
 						// text bubble
 						if (mImageMap.isBubbleShown(id)) {
-							Intent in = new Intent(FoodTrayActivity.this,
-									FoodDetailsActivity.class);
-
-							/* grab the foodId defined as in database */
-							String foodId = grabFoodIdByResId(id);
-							String resName = getResources().getResourceName(id);
-
-							if (foodId.equals("")) {
-								String current = resName.replace(
-										getPackageName() + ":id/food_", "");
-								Toast.makeText(
-										getApplicationContext(),
-										"This content is coming soon: "
-												+ current, Toast.LENGTH_SHORT)
-										.show();
-
-							} else {
-								// attach the foodId string in bundle
-								in.putExtra("foodId", foodId);
-								startActivity(in);
-							}
+							showDetailsPage(id);
 						} else {
 							mImageMap.showBubble(id);
+							Toast.makeText(getApplicationContext(), R.string.inform_user, Toast.LENGTH_LONG).show();
 						}
 
 					}
 
 					@Override
 					public void onBubbleClicked(int id) {
-						// react to info bubble for area being tappe
+						// react to info bubble for area being tapped
+						showDetailsPage(id);
 					}
 				});
+	}
+
+	private void showDetailsPage(int id) {
+		Intent in = new Intent(FoodTrayActivity.this, FoodDetailsActivity.class);
+
+		/* grab the foodId defined as in database */
+		String foodId = grabFoodIdByResId(id);
+		String resName = getResources().getResourceName(id);
+
+		if (foodId.equals("")) {
+			String current = resName
+					.replace(getPackageName() + ":id/food_", "");
+			Toast.makeText(getApplicationContext(),
+					"This content is coming soon: " + current,
+					Toast.LENGTH_SHORT).show();
+
+		} else {
+			// attach the foodId string in bundle
+			in.putExtra("foodId", foodId);
+			startActivity(in);
+		}
 	}
 
 	/*

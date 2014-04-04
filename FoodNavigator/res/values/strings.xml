@@ -25,11 +25,19 @@
         <item quantity="other">%1$d results for \"%2$s\": </item>
     </plurals>
 
+    <string-array name="language_preference">
+        <item>Hindi</item>
+        <item>Korean</item>
+    </string-array>
+
     <!-- Search failure message. -->
     <string name="no_results">No results found for \"%s\"</string>
     <string name="meal_breakfast">Breakfast</string>
     <string name="meal_lunch">Lunch</string>
     <string name="meal_dinner">Dinner</string>
     <string name="meal_dessert">Dessert</string>
+    <string name="language_preference">Select Language Preference</string>
+    <string name="language_detailed">Select a language that you are more comfortable with.</string>
+    <string name="inform_user">Click on the food again to see the details.</string>
 
 </resources>

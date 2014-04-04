@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap"
+    android:padding="10dp" >
+
+    <edu.gatech.hci.foodnavigator.widget.CustomTextView
+        android:id="@+id/TV_Description"
+        style="@style/Text.18"
+        android:gravity="center_horizontal"
+        android:text="@string/language_detailed"
+        android:textColor="@color/swatch_10" />
+
+    <Spinner
+        android:id="@+id/S_LanguagePreference"
+        style="@style/Wrap"
+        android:layout_below="@id/TV_Description"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/Btn_Ok"
+        style="@style/Wrap"
+        android:layout_below="@id/S_LanguagePreference"
+        android:layout_centerInParent="true"
+        android:paddingTop="10dp"
+        android:text="OK" />
+
+</RelativeLayout>
