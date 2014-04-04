@@ -20,7 +20,7 @@
 
 <resources>
 
-    <style name="Theme.FoodNavigator" parent="@style/Theme.Sherlock">
+    <style name="Theme.FoodNavigator" parent="@style/Theme.Sherlock.Light.DarkActionBar">
         <item name="actionBarItemBackground">@drawable/selectable_background_flashcards</item>
         <item name="popupMenuStyle">@style/PopupMenu.Flashcards</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Flashcards</item>

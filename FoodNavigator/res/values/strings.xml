@@ -12,7 +12,8 @@
     <string name="inDesc">Curry, Samosa ..</string>
     <string name="krTitle">Korean</string>
     <string name="krDesc">Bibimbap, Samgyupsal ..</string>
-    
+    <string name="home_page_title">Select a type of cuisine</string>
+    <string name="action_search">Search</string>
     <string name="TTS_NA_MSG">Pronunciation feature requires that you have a TextToSpeech Engine installed. Do you want to install it from Google Play Store ?</string>
     <string name="CheckBoxString">Don\'t show this dialog again!</string>
 
