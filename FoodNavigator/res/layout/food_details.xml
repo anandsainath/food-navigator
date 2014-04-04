@@ -4,14 +4,16 @@
     style="@style/Match"
     android:background="@color/swatch_01" >
 
-    <RelativeLayout style="@style/Match" 
-        android:paddingBottom="20dp">
+    <RelativeLayout
+        style="@style/Match"
+        android:paddingBottom="20dp" >
+
         <ImageView
             android:id="@+id/IV_FoodImage"
-            android:layout_margin="16dp"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
             android:src="@drawable/mimosa_2" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
@@ -22,6 +24,16 @@
             android:text="MIMOSA"
             android:textColor="@color/swatch_10"
             hci:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/IV_Favorite"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignBottom="@id/TV_FoodName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/TV_FoodName"
+            android:src="@drawable/ic_favorite_off" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_FoodPronunciation"
@@ -34,9 +46,11 @@
 
         <ImageView
             android:id="@+id/IV_TTS"
-            style="@style/Wrap"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_alignBottom="@id/TV_FoodPronunciation"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/TV_FoodPronunciation"
             android:src="@drawable/ic_action_volume_up_black" />
 

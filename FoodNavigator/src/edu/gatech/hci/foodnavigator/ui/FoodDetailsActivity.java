@@ -14,6 +14,7 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 
 	/* views to be updated */
 	private TextView tvEnName, tvEnPronunciation, tvLocalName, tvLocalDesc;
+	private ImageView ivFavorite;
 	private Food food;
 
 	@Override
@@ -48,6 +50,7 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 		tvEnPronunciation = (TextView) findViewById(R.id.TV_FoodPronunciation);
 		tvLocalName = (TextView) findViewById(R.id.TV_FoodMeaning1);
 		tvLocalDesc = (TextView) findViewById(R.id.TV_FoodMeaning2);
+		ivFavorite = (ImageView) findViewById(R.id.IV_Favorite);
 
 		/* grab foodId passed in the bundle */
 		// TODO: handle exception
@@ -58,10 +61,20 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 
 		db = DatabaseHelper.getInstance(this.getApplicationContext());
 		food = db.getFood(foodId, countryId);
+		// TODO update db table to reflect favorite? or create a separate table
+		// for favorite
 
+		ivFavorite.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				toggleFavorite(food);
+			}
+
+		});
 		// update contents displayed based on retrieved food info
 		updateFoodInfoViews(food);
-		
+
 		try {
 			Intent checkTTSIntent = new Intent();
 			checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -166,12 +179,39 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 					Toast.LENGTH_LONG).show();
 		}
 	}
-	
+
 	// update contents displayed based on retrieved food info
 	private void updateFoodInfoViews(Food food) {
 		tvEnName.setText(food.getEnName());
 		tvEnPronunciation.setText(food.getEnPronunciation());
 		tvLocalName.setText(food.getLocalName());
 		tvLocalDesc.setText(food.getLocalDescription());
+		if (food.getFavorite()) {
+			ivFavorite.setImageDrawable(getResources().getDrawable(
+					R.drawable.ic_favorite_on));
+		} else {
+			ivFavorite.setImageDrawable(getResources().getDrawable(
+					R.drawable.ic_favorite_off));
+		}
+	}
+
+	private void toggleFavorite(Food food) {
+		if (food.getFavorite()) {
+			// currently on --> turn it off
+			ivFavorite.setImageDrawable(getResources().getDrawable(
+					R.drawable.ic_favorite_off));
+			food.setFavorite(false);
+			// TODO UPDATE IN DB
+			Toast.makeText(getApplicationContext(), "Removed from favorite",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			// currently off --> turn it on
+			ivFavorite.setImageDrawable(getResources().getDrawable(
+					R.drawable.ic_favorite_on));
+			food.setFavorite(true);
+			// TODO UPDATE IN DB
+			Toast.makeText(getApplicationContext(), "Added to favorite",
+					Toast.LENGTH_SHORT).show();
+		}
 	}
 }
