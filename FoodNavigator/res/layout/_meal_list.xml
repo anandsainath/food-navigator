@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hci="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
+    android:id="@+id/LL_ListContainer"
+    style="@style/Match"
+    android:orientation="vertical" >
+
+    <include layout="@layout/__page_title" />
+
+    <LinearLayout
+        android:id="@+id/LL_Meal_breakfast"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            style="@style/Text.18"
+            android:text="@string/meal_breakfast"
+            android:textColor="@color/swatch_10"
+            hci:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LL_Meal_lunch"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            style="@style/Text.18"
+            android:text="@string/meal_lunch"
+            android:textColor="@color/swatch_10"
+            hci:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LL_Meal_dinner"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            style="@style/Text.18"
+            android:text="@string/meal_dinner"
+            android:textColor="@color/swatch_10"
+            hci:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LL_Meal_dessert"
+        style="@style/HomeListItem"
+        android:background="@drawable/home_list_item_back"
+        android:baselineAligned="false"
+        android:clickable="true" >
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            style="@style/Text.18"
+            android:text="@string/meal_dessert"
+            android:textColor="@color/swatch_10"
+            hci:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -16,16 +16,17 @@
 
 package edu.gatech.hci.foodnavigator.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import edu.gatech.hci.foodnavigator.BaseActivity;
 import edu.gatech.hci.foodnavigator.R;
+import edu.gatech.hci.foodnavigator.menu.AppMainMenu;
 import edu.gatech.hci.foodnavigator.utilities.ImageMap;
 
-public class FoodTrayActivity extends Activity {
+public class FoodTrayActivity extends BaseActivity {
 	ImageMap mImageMap;
 	String TAG = " @@@ FoodTrayActivity @@@ ";
 
@@ -33,6 +34,7 @@ public class FoodTrayActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_activity);
+		setMainMenu(new AppMainMenu());
 
 		// find the image map in the view
 		mImageMap = (ImageMap) findViewById(R.id.map);
@@ -45,38 +47,37 @@ public class FoodTrayActivity extends Activity {
 					public void onImageMapClicked(int id, ImageMap imageMap) {
 						// when the area is tapped, show the name in a
 						// text bubble
-						Log.d(TAG, "onImageMap id: " + id);
-						String resName = getResources().getResourceName(id);
+						if (mImageMap.isBubbleShown(id)) {
+							Intent in = new Intent(FoodTrayActivity.this,
+									FoodDetailsActivity.class);
 
-						Log.d(TAG, "onImageMap resName: " + resName);
-						mImageMap.showBubble(id);
+							/* grab the foodId defined as in database */
+							String foodId = grabFoodIdByResId(id);
+							String resName = getResources().getResourceName(id);
+
+							if (foodId.equals("")) {
+								String current = resName.replace(
+										getPackageName() + ":id/food_", "");
+								Toast.makeText(
+										getApplicationContext(),
+										"This content is coming soon: "
+												+ current, Toast.LENGTH_SHORT)
+										.show();
+
+							} else {
+								// attach the foodId string in bundle
+								in.putExtra("foodId", foodId);
+								startActivity(in);
+							}
+						} else {
+							mImageMap.showBubble(id);
+						}
+
 					}
 
 					@Override
 					public void onBubbleClicked(int id) {
-						// react to info bubble for area being tapped
-						String resName = getResources().getResourceName(id);
-						Log.d(TAG, "onBubble resName: " + resName);
-
-						Intent in = new Intent(FoodTrayActivity.this,
-								FoodDetailsActivity.class);
-
-						/* grab the foodId defined as in database */
-						String foodId = grabFoodIdByResId(id);
-
-						if (foodId.equals("")) {
-							String current = resName.replace(getPackageName()
-									+ ":id/food_", "");
-							Toast.makeText(getApplicationContext(),
-									"This content is coming soon: " + current,
-									Toast.LENGTH_SHORT).show();
-
-						} else {
-							// attach the foodId string in bundle
-							in.putExtra("foodId", foodId);
-							startActivity(in);
-						}
-
+						// react to info bubble for area being tappe
 					}
 				});
 	}

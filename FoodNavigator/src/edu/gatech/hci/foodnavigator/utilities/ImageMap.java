@@ -302,8 +302,8 @@ public class ImageMap extends ImageView {
 		Area a = null;
 		String rid = "";
 		rid = id.replace("@+id/", "");
-		
-//		Log.d(" @@@ ImageMap @@@", "rid: " + rid);
+
+		// Log.d(" @@@ ImageMap @@@", "rid: " + rid);
 		int _id = 0;
 
 		try {
@@ -342,6 +342,10 @@ public class ImageMap extends ImageView {
 	public void addArea(Area a) {
 		mAreaList.add(a);
 		mIdToArea.put(a.getId(), a);
+	}
+
+	public boolean isBubbleShown(int areaId) {
+		return (mBubbleMap.get(areaId) == null) ? false : true;
 	}
 
 	public void addBubble(String text, int areaId) {
