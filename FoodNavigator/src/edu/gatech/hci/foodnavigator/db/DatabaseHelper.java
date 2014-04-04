@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private final Context context;
 	private SQLiteDatabase db;
 
-	private static final int DATABASE_VERSION = 8;
+	private static final int DATABASE_VERSION = 9;
 
 	private static final String DATABASE_NAME = "food_navigator.db";
 	private static final String DATABASE_PATH = "/data/data/edu.gatech.hci.foodnavigator/databases/";
@@ -267,22 +267,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	/* ~~~~~~~~~ DB METHODS ~~~~~~~~~~~ */
-	public Food getFood(int id, int country_id) {
+
+	/*
+	 * retrieve information about food identified with foodId and localized
+	 * content in which country is identified with countryId
+	 */
+	public Food getFood(int foodId, int countryId) {
 		Food food = new Food();
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		String query = "SELECT _id, name, pronunciation, description FROM "
-				+ TBL_FOOD_INDEX + " NATURAL JOIN " + TBL_DESC_KO + ";";
+		String localTable = ""; // to store the localization table of selected countryId
 
-		Cursor cursor = db.rawQuery(query, null);
+		switch (countryId) {
+		
+		default:
+			localTable = TBL_DESC_EN;
+			break;
+			
+		case 1:
+			// English (USA)
+			localTable = TBL_DESC_EN;
+			break;
+
+		case 2:
+			// Korean
+			localTable = TBL_DESC_KO;
+			break;
+
+		case 3:
+			// Hindi
+			localTable = TBL_DESC_HI;
+			break;
+			
+				
+		}
+
+		String query = "SELECT F._id, E.name, E.pronunciation, L.name, L.description FROM "
+				+ TBL_FOOD_INDEX + " AS F JOIN " + TBL_DESC_EN + " AS E ON F._id=E._id JOIN " + localTable
+				+ " AS L ON F._id=L._id WHERE F._id = ?";
+
+		Cursor cursor = db.rawQuery(query, new String[] { String.valueOf(foodId) });
 
 		if (cursor.moveToFirst()) {
 			do {
 				food.setId(Integer.parseInt(cursor.getString(0)));
-				food.setName(cursor.getString(1));
-				food.setPronunciation(cursor.getString(2));
-				food.setDescription(cursor.getString(3));
-
+				food.setEnName(cursor.getString(1));
+				food.setEnPronunciation(cursor.getString(2));
+				food.setLocalName(cursor.getString(3));
+				food.setLocalDescription(cursor.getString(4));
+				
 			} while (cursor.moveToNext());
 		}
 		db.close();

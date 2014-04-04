@@ -5,12 +5,13 @@
     android:background="@color/swatch_01" >
 
     <RelativeLayout style="@style/Match" >
-
         <ImageView
             android:id="@+id/IV_FoodImage"
-            style="@style/Wrap"
+            android:layout_margin="16dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/mimosa" />
+            android:src="@drawable/mimosa_2" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_FoodName"
@@ -27,8 +28,8 @@
             style="@style/Text.20"
             android:layout_below="@id/TV_FoodName"
             android:layout_centerHorizontal="true"
-            android:text="mi-mos-uh"
             android:layout_margin="8dp"
+            android:text="mi-mos-uh"
             android:textColor="@color/swatch_10" />
 
         <ImageView

@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 		db = DatabaseHelper.getInstance(this.getApplicationContext());
 		// db.getWritableDatabase();
 		Food food = db.getFood(1, 1);
-		Log.d(TAG, food.getName() + " " + food.getDescription());
+		Log.d(TAG, food.getEnName() + " " + food.getLocalDescription());
 	}
 
 	@Override

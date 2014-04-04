@@ -19,31 +19,48 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.R;
+import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
+import edu.gatech.hci.foodnavigator.ui.model.Food;
 
 public class FoodDetailsActivity extends Activity implements OnInitListener {
+
+	private static final String TAG = " @@@ FoodDetail";
 
 	protected TextToSpeech TTSEngine;
 	protected int TTS_AVAILABLE;
 	public static final String PREFS_NAME = "TTS_INSTALLER_PREFERENCE";
 	private ImageView IV_TTS;
 
+	private DatabaseHelper db;
+
 	/* views to be updated */
-	private TextView tvEnName, tvEnPronunciation, tvOwnName, tvOwnDesc;
+	private TextView tvEnName, tvEnPronunciation, tvLocalName, tvLocalDesc;
+	private Food food;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_details);
+
 		IV_TTS = (ImageView) findViewById(R.id.IV_TTS);
 
 		tvEnName = (TextView) findViewById(R.id.TV_FoodName);
 		tvEnPronunciation = (TextView) findViewById(R.id.TV_FoodPronunciation);
-		tvOwnName = (TextView) findViewById(R.id.TV_FoodMeaning1);
-		tvOwnDesc = (TextView) findViewById(R.id.TV_FoodMeaning2);
+		tvLocalName = (TextView) findViewById(R.id.TV_FoodMeaning1);
+		tvLocalDesc = (TextView) findViewById(R.id.TV_FoodMeaning2);
 
 		/* grab foodId passed in the bundle */
-		String foodId = getIntent().getStringExtra("foodId");
+		int foodId = Integer.parseInt(getIntent().getStringExtra("foodId"));
 
+		// hardcoding countryId for testing
+		int countryId = 2; // 2 for Korean
+
+		db = DatabaseHelper.getInstance(this.getApplicationContext());
+		food = db.getFood(foodId, countryId);
+
+		// update contents displayed based on retrieved food info
+		updateFoodInfoViews(food);
+		
 		try {
 			Intent checkTTSIntent = new Intent();
 			checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -58,6 +75,10 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 			@Override
 			public void onClick(View v) {
 				try {
+					String name = "Mimosa";
+					if (!food.getEnName().equals("")) {
+						name = food.getEnName();
+					}
 					TTSEngine.speak("Mimosa", TextToSpeech.QUEUE_FLUSH, null);
 				} catch (Exception E) {
 					Log.e("Food", "Error", E);
@@ -143,5 +164,13 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 					"Speech Engine is unsupported by your device",
 					Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	// update contents displayed based on retrieved food info
+	private void updateFoodInfoViews(Food food) {
+		tvEnName.setText(food.getEnName());
+		tvEnPronunciation.setText(food.getEnPronunciation());
+		tvLocalName.setText(food.getLocalName());
+		tvLocalDesc.setText(food.getLocalDescription());
 	}
 }
