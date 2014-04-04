@@ -35,6 +35,7 @@ public class FoodTrayActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_activity);
 		setMainMenu(new AppMainMenu());
+		getSlidingMenu().setSlidingEnabled(false);
 
 		// find the image map in the view
 		mImageMap = (ImageMap) findViewById(R.id.map);
@@ -51,7 +52,9 @@ public class FoodTrayActivity extends BaseActivity {
 							showDetailsPage(id);
 						} else {
 							mImageMap.showBubble(id);
-							Toast.makeText(getApplicationContext(), R.string.inform_user, Toast.LENGTH_LONG).show();
+							Toast.makeText(getApplicationContext(),
+									R.string.inform_user, Toast.LENGTH_LONG)
+									.show();
 						}
 
 					}
