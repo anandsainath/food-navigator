@@ -22,9 +22,10 @@ import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.BaseActivity;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
+import edu.gatech.hci.foodnavigator.menu.AppMainMenu;
 import edu.gatech.hci.foodnavigator.model.Food;
 
-public class FoodDetailsActivity extends Activity implements OnInitListener {
+public class FoodDetailsActivity extends BaseActivity implements OnInitListener {
 
 	private static final String TAG = " @@@ FoodDetail";
 
@@ -41,9 +42,10 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 	private Food food;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_details);
+		setMainMenu(new AppMainMenu());
 
 		IV_TTS = (ImageView) findViewById(R.id.IV_TTS);
 
