@@ -62,7 +62,7 @@ public class BaseActivity extends SlidingFragmentActivity implements MenuListFra
 		sm.setShadowDrawable(R.drawable.shadow);
 		sm.setFadeDegree(0.35f);
 		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		sm.setSlidingEnabled(false);
+		sm.setSlidingEnabled(true);
 
 		// Menu Frame
 		getSupportFragmentManager().beginTransaction().replace(R.id.main_menu, menuFragment).commit();

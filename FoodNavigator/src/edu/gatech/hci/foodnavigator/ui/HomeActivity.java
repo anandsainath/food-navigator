@@ -3,6 +3,10 @@ package edu.gatech.hci.foodnavigator.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import edu.gatech.hci.foodnavigator.BaseActivity;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.menu.AppMainMenu;
@@ -32,19 +36,29 @@ public class HomeActivity extends BaseActivity implements AppHomeFragment.Callba
 		case R.id.home_american:
 			Toast.makeText(getApplicationContext(), R.string.usTitle, Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this, FoodTrayActivity.class));
-
 			break;
 		case R.id.home_indian:
-			Toast.makeText(getApplicationContext(), "Will be available soon at only $1.99!", Toast.LENGTH_SHORT).show();
-			// Toast.makeText(getApplicationContext(), R.string.inTitle,
-			// Toast.LENGTH_LONG).show();
-			break;
 		case R.id.home_korean:
 			Toast.makeText(getApplicationContext(), "Will be available soon at only $1.99!", Toast.LENGTH_SHORT).show();
-			// Toast.makeText(getApplicationContext(), R.string.krTitle,
-			// Toast.LENGTH_LONG).show();
 			break;
 		}
 
+	}
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.app_home_menu, (com.actionbarsherlock.view.Menu) menu);
+		this.menu = menu;
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_search:
+			onSearchRequested();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
