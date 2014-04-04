@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import edu.gatech.hci.foodnavigator.BaseActivity;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
 import edu.gatech.hci.foodnavigator.model.Food;
@@ -56,8 +57,8 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 		// TODO: handle exception
 		int foodId = Integer.parseInt(getIntent().getStringExtra("foodId"));
 
-		// hardcoding countryId for testing
-		int countryId = 2; // 2 for Korean
+		/* grab current countryId */
+		int countryId = getCountryId();
 
 		db = DatabaseHelper.getInstance(this.getApplicationContext());
 		food = db.getFood(foodId, countryId);
@@ -213,5 +214,26 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 			Toast.makeText(getApplicationContext(), "Added to favorite",
 					Toast.LENGTH_SHORT).show();
 		}
+	}
+
+	/* grab user's language from share preference */
+	private int getCountryId() {
+		SharedPreferences prefs = this.getSharedPreferences(
+				BaseActivity.LANGUAGE_PREFERENCE, Context.MODE_PRIVATE);
+		String language = "";
+		language = prefs.getString("Language", "American");
+
+		int countryId = -1;
+
+		// set the countryId based on selected language
+		if (language.equals("American")) {
+			countryId = 1;
+		} else if (language.equals("Korean")) {
+			countryId = 2;
+		} else if (language.equals("Hindi")) {
+			countryId = 3;
+		}
+
+		return countryId;
 	}
 }
