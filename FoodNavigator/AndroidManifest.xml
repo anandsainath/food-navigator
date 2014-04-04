@@ -23,9 +23,13 @@
             android:name="android.app.default_searchable"
             android:value="edu.gatech.hci.foodnavigator.search.Search" />
 
-        <activity android:name=".ui.FoodTrayActivity" />
+        <activity
+            android:name=".ui.FoodTrayActivity"
+            android:noHistory="true" />
         <activity android:name=".ui.FoodDetailsActivity" />
-        <activity android:name=".ui.MealActivity" />
+        <activity
+            android:name=".ui.MealActivity"
+            android:noHistory="true" />
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/app_name" >
