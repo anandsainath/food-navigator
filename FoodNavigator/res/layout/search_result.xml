@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hci="http://schemas.android.com/apk/res/edu.gatech.hci.foodnavigator"
+    style="@style/Match"
+    android:background="@color/swatch_04"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <edu.gatech.hci.foodnavigator.widget.CustomTextView
+        android:id="@+id/word"
+        style="@style/Text.18"
+        android:textColor="@color/swatch_10"
+        hci:textStyle="bold" />
+
+    <edu.gatech.hci.foodnavigator.widget.CustomTextView
+        android:id="@+id/definition"
+        style="@style/Text.14"
+        android:singleLine="true"
+        android:text="Some dummy text here.."
+        android:textColor="@color/swatch_10" />
+
+</LinearLayout>

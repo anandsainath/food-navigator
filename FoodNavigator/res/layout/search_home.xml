@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Match"
+    android:orientation="vertical" >
+
+    <include layout="@layout/__page_title" />
+
+    <ListView
+        android:id="@+id/list"
+        style="@style/Match" />
+
+</LinearLayout>

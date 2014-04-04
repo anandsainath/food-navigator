@@ -14,7 +14,17 @@
     <string name="krDesc">Bibimbap, Samgyupsal ..</string>
     <string name="home_page_title">Select a type of cuisine</string>
     <string name="action_search">Search</string>
+    <string name="search_hint">Search for food items</string>
     <string name="TTS_NA_MSG">Pronunciation feature requires that you have a TextToSpeech Engine installed. Do you want to install it from Google Play Store ?</string>
     <string name="CheckBoxString">Don\'t show this dialog again!</string>
+
+    <!-- Shown above search results when we receive a search request. -->
+    <plurals name="search_results">
+        <item quantity="one">%1$d result for \"%2$s\": </item>
+        <item quantity="other">%1$d results for \"%2$s\": </item>
+    </plurals>
+
+    <!-- Search failure message. -->
+    <string name="no_results">No results found for \"%s\"</string>
 
 </resources>
