@@ -6,10 +6,11 @@ import android.graphics.Bitmap;
 public class Food {
 
 	private long id = -1;
-	private String name = "";
+	private String enName = "";
+	private String enPronunciation = "";
 	private String country_name = "";
-	private String pronunciation = "";
-	private String description = "";
+	private String localName = "";
+	private String localDescription = "";
 	private Bitmap picture = null;
 
 	public long getId() {
@@ -20,12 +21,20 @@ public class Food {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getEnName() {
+		return enName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEnName(String enName) {
+		this.enName = enName;
+	}
+
+	public String getEnPronunciation() {
+		return enPronunciation;
+	}
+
+	public void setEnPronunciation(String enPronunciation) {
+		this.enPronunciation = enPronunciation;
 	}
 
 	public String getCountry_name() {
@@ -36,20 +45,20 @@ public class Food {
 		this.country_name = country_name;
 	}
 
-	public String getPronunciation() {
-		return pronunciation;
+	public String getLocalName() {
+		return localName;
 	}
 
-	public void setPronunciation(String pronunciation) {
-		this.pronunciation = pronunciation;
+	public void setLocalName(String localName) {
+		this.localName = localName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getLocalDescription() {
+		return localDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setLocalDescription(String localDescription) {
+		this.localDescription = localDescription;
 	}
 
 	public Bitmap getPicture() {

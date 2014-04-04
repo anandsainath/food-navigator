@@ -27,3 +27,5 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+FoodNavigator/src/edu/gatech/hci/foodnavigator/db/DatabaseHelper.java
