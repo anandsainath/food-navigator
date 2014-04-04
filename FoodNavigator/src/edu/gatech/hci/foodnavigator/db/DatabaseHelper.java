@@ -5,12 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
-
-<<<<<<< HEAD
 import edu.gatech.hci.foodnavigator.model.Food;
-=======
 import android.app.SearchManager;
->>>>>>> 6ec65663a05974556e38ffe6dc04113467208b7d
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -20,7 +16,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.provider.BaseColumns;
 import android.util.Log;
-import edu.gatech.hci.foodnavigator.ui.model.Food;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -102,10 +97,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	private static HashMap<String, String> buildColumnMap() {
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(COL_FOOD_NAME, COL_FOOD_NAME + " as " + SearchManager.SUGGEST_COLUMN_TEXT_1);
+		map.put(COL_FOOD_NAME, COL_FOOD_NAME + " as "
+				+ SearchManager.SUGGEST_COLUMN_TEXT_1);
 		map.put(BaseColumns._ID, "rowid AS " + BaseColumns._ID);
-		map.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID, "rowid AS " + SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID);
-		map.put(SearchManager.SUGGEST_COLUMN_SHORTCUT_ID, "rowid AS " + SearchManager.SUGGEST_COLUMN_SHORTCUT_ID);
+		map.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID, "rowid AS "
+				+ SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID);
+		map.put(SearchManager.SUGGEST_COLUMN_SHORTCUT_ID, "rowid AS "
+				+ SearchManager.SUGGEST_COLUMN_SHORTCUT_ID);
 		return map;
 	}
 
@@ -162,7 +160,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		try {
 			String myPath = DATABASE_PATH + DATABASE_NAME;
-			checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+			checkDB = SQLiteDatabase.openDatabase(myPath, null,
+					SQLiteDatabase.OPEN_READONLY);
 
 		} catch (SQLiteException e) {
 
@@ -213,7 +212,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		// Open the database
 		String myPath = DATABASE_PATH + DATABASE_NAME;
-		db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+		db = SQLiteDatabase.openDatabase(myPath, null,
+				SQLiteDatabase.OPEN_READONLY);
 
 	}
 
@@ -266,11 +266,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			break;
 		}
 
-		String query = "SELECT F._id, E.name, E.pronunciation, L.name, L.description FROM " + TBL_FOOD_INDEX
-				+ " AS F JOIN " + TBL_DESC_EN + " AS E ON F._id=E._id JOIN " + localTable
+		String query = "SELECT F._id, E.name, E.pronunciation, L.name, L.description FROM "
+				+ TBL_FOOD_INDEX
+				+ " AS F JOIN "
+				+ TBL_DESC_EN
+				+ " AS E ON F._id=E._id JOIN "
+				+ localTable
 				+ " AS L ON F._id=L._id WHERE F._id = ?";
 
-		Cursor cursor = db.rawQuery(query, new String[] { String.valueOf(foodId) });
+		Cursor cursor = db.rawQuery(query,
+				new String[] { String.valueOf(foodId) });
 
 		if (cursor.moveToFirst()) {
 			do {
@@ -328,7 +333,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 *            The columns to return
 	 * @return A Cursor over all rows matching the query
 	 */
-	private Cursor query(String selection, String[] selectionArgs, String[] columns) {
+	private Cursor query(String selection, String[] selectionArgs,
+			String[] columns) {
 		/*
 		 * The SQLiteBuilder provides a map for all possible columns requested
 		 * to actual columns in the database, creating a simple column alias
@@ -339,7 +345,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		builder.setTables(TBL_FOOD_INDEX);
 		builder.setProjectionMap(mColumnMap);
 
-		Cursor cursor = builder.query(getReadableDatabase(), columns, selection, selectionArgs, null, null, null);
+		Cursor cursor = builder.query(getReadableDatabase(), columns,
+				selection, selectionArgs, null, null, null);
 
 		if (cursor == null) {
 			return null;

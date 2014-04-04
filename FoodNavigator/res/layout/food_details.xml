@@ -5,7 +5,7 @@
     android:background="@color/swatch_01" >
 
     <RelativeLayout style="@style/Match" 
-        android:paddingBottom="10dp">
+        android:paddingBottom="20dp">
         <ImageView
             android:id="@+id/IV_FoodImage"
             android:layout_margin="16dp"
