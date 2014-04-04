@@ -14,8 +14,9 @@ public class AppMenuConstants {
 
 	public static enum Menu {
 		// Main Menu items..
-		SETTINGS("Settings", "Settings"), ABOUT("Info", "info"), HOME("Home", "wp_home");
-		
+		SETTINGS("Settings", "Settings"), ABOUT("Info", "info"), HOME("Home",
+				"wp_home"), FAVORITES("Favorites", "Favorites");
+
 		public String tag, value;
 
 		private Menu(String tag, String value) {
@@ -29,11 +30,17 @@ public class AppMenuConstants {
 	static {
 
 		AppMainMenu = new ArrayList<MenuListItem>(7);
-		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_home, Menu.HOME.tag, Menu.HOME.value, false,
+		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_home,
+				Menu.HOME.tag, Menu.HOME.value, false,
 				MenuListItem.MenuName.APP_MENU.getValue()));
-		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_settings, Menu.SETTINGS.tag, Menu.SETTINGS.value, false,
+		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_settings,
+				Menu.SETTINGS.tag, Menu.SETTINGS.value, false,
 				MenuListItem.MenuName.APP_MENU.getValue()));
-		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_about, Menu.ABOUT.tag, Menu.ABOUT.value, false,
+		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_about,
+				Menu.ABOUT.tag, Menu.ABOUT.value, false,
+				MenuListItem.MenuName.APP_MENU.getValue()));
+		AppMainMenu.add(new MenuListItem(R.drawable.ic_action_star_0,
+				Menu.FAVORITES.tag, Menu.FAVORITES.value, false,
 				MenuListItem.MenuName.APP_MENU.getValue()));
 	}
 }
