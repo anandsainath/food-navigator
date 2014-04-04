@@ -1,4 +1,4 @@
-package edu.gatech.hci.foodnavigator.ui.model;
+package edu.gatech.hci.foodnavigator.model;
 
 import android.graphics.Bitmap;
 
@@ -12,6 +12,7 @@ public class Food {
 	private String localName = "";
 	private String localDescription = "";
 	private Bitmap picture = null;
+	private Boolean favorite = false;
 
 	public long getId() {
 		return id;
@@ -67,6 +68,14 @@ public class Food {
 
 	public void setPicture(Bitmap picture) {
 		this.picture = picture;
+	}
+
+	public Boolean getFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(Boolean favorite) {
+		this.favorite = favorite;
 	}
 
 }

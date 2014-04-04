@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
-import edu.gatech.hci.foodnavigator.ui.model.Food;
+import edu.gatech.hci.foodnavigator.model.Food;
 
 public class FoodDetailsActivity extends Activity implements OnInitListener {
 
@@ -79,7 +79,7 @@ public class FoodDetailsActivity extends Activity implements OnInitListener {
 					if (!food.getEnName().equals("")) {
 						name = food.getEnName();
 					}
-					TTSEngine.speak("Mimosa", TextToSpeech.QUEUE_FLUSH, null);
+					TTSEngine.speak(name, TextToSpeech.QUEUE_FLUSH, null);
 				} catch (Exception E) {
 					Log.e("Food", "Error", E);
 				}

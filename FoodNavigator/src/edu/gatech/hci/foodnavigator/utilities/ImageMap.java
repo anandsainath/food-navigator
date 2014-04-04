@@ -300,19 +300,10 @@ public class ImageMap extends ImageView {
 	 */
 	protected Area addShape(String shape, String name, String coords, String id) {
 		Area a = null;
-		// String rid = id.replace("@id/", "");
 		String rid = "";
 		rid = id.replace("@+id/", "");
-//		rid = id.replace("@string/", "");
 		
-		
-		Context cont = this.getContext();
-		
-//		rid = String.valueOf(cont.getResources().getIdentifier(id, null, null));
-		
-//		String dbIndex = cont.getResources().getString(resId);
-		Log.d(" @@@ ImageMap @@@", "rid: " + rid);
-		// rid = "test_rid";
+//		Log.d(" @@@ ImageMap @@@", "rid: " + rid);
 		int _id = 0;
 
 		try {

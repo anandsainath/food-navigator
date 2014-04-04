@@ -2,7 +2,7 @@ package edu.gatech.hci.foodnavigator.ui;
 
 import edu.gatech.hci.foodnavigator.R;
 import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
-import edu.gatech.hci.foodnavigator.ui.model.Food;
+import edu.gatech.hci.foodnavigator.model.Food;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;

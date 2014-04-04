@@ -4,7 +4,8 @@
     style="@style/Match"
     android:background="@color/swatch_01" >
 
-    <RelativeLayout style="@style/Match" >
+    <RelativeLayout style="@style/Match" 
+        android:paddingBottom="10dp">
         <ImageView
             android:id="@+id/IV_FoodImage"
             android:layout_margin="16dp"
@@ -18,7 +19,6 @@
             style="@style/Text.24"
             android:layout_below="@id/IV_FoodImage"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:text="MIMOSA"
             android:textColor="@color/swatch_10"
             hci:textStyle="bold" />
@@ -54,8 +54,7 @@
             style="@style/Text.18"
             android:layout_below="@id/TV_FoodMeaning1"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
             android:text="Orange juice and champagne"
             android:textColor="@color/swatch_10" />
     </RelativeLayout>

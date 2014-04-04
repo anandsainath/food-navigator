@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import edu.gatech.hci.foodnavigator.ui.model.Food;
+import edu.gatech.hci.foodnavigator.model.Food;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
