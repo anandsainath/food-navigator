@@ -1,14 +1,9 @@
 package edu.gatech.hci.foodnavigator.ui;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.actionbarsherlock.view.Menu;
@@ -23,47 +18,13 @@ public class HomeActivity extends BaseActivity implements
 		AppHomeFragment.Callbacks {
 
 	CustomTextView TV_PageTitle;
-	public static final String PREFS_NAME = "LANGUAGE_SELECTION_PREFERENCE";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.app_home);
-
 		if (!isLanguageSet()) {
-			final Dialog dialog = new Dialog(this);
-			dialog.setTitle(R.string.language_preference);
-			dialog.setContentView(R.layout._preference_dialog);
-
-			final Spinner spinner = (Spinner) dialog
-					.findViewById(R.id.S_LanguagePreference);
-			// Create an ArrayAdapter using the string array and a default
-			// spinner layout
-			ArrayAdapter<CharSequence> adapter = ArrayAdapter
-					.createFromResource(this, R.array.language_preference,
-							android.R.layout.simple_spinner_item);
-			// Specify the layout to use when the list of choices appears
-			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			// Apply the adapter to the spinner
-			spinner.setAdapter(adapter);
-
-			Button okButton = (Button) dialog.findViewById(R.id.Btn_Ok);
-			okButton.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					String language = getResources().getStringArray(
-							R.array.language_preference)[spinner
-							.getSelectedItemPosition()];
-					String str = language
-							+ " is set as the language preference!";
-					Toast.makeText(getApplicationContext(), str,
-							Toast.LENGTH_LONG).show();
-					commitLanguagePreference(language);
-					dialog.dismiss();
-				}
-			});
-
-			dialog.show();
+			showLanguagePreferenceDialog();
 		}
 
 		TV_PageTitle = (CustomTextView) findViewById(R.id.TV_PageHeader);
@@ -74,6 +35,12 @@ public class HomeActivity extends BaseActivity implements
 				R.string.small_screen)) {
 			setMainMenu(new AppMainMenu());
 		}
+	}
+
+	private boolean isLanguageSet() {
+		SharedPreferences settings = getSharedPreferences(LANGUAGE_PREFERENCE,
+				Activity.MODE_PRIVATE);
+		return (settings.getString("Language", null) == null) ? false : true;
 	}
 
 	@Override
@@ -92,20 +59,6 @@ public class HomeActivity extends BaseActivity implements
 			break;
 		}
 
-	}
-
-	private void commitLanguagePreference(String language) {
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME,
-				Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putString("LanguageSet", language);
-		editor.commit();
-	}
-
-	private boolean isLanguageSet() {
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME,
-				Activity.MODE_PRIVATE);
-		return (settings.getString("Language", null) == null) ? false : true;
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
