@@ -37,8 +37,8 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 	private DatabaseHelper db;
 
 	/* views to be updated */
-	private TextView tvLocalFoodName, tvLocalPronun, tvUserFoodName,
-			tvUserDesc;
+	private TextView tvLocalFoodName, tvLocalPronun, tvLocalDesc,
+			tvUserFoodName, tvUserDesc;
 	private ImageView ivFavorite;
 	private Food food;
 
@@ -50,8 +50,9 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 
 		IV_TTS = (ImageView) findViewById(R.id.IV_TTS);
 
-		tvLocalFoodName = (TextView) findViewById(R.id.TV_FoodName);
-		tvLocalPronun = (TextView) findViewById(R.id.TV_FoodLocalPronun);
+		tvLocalFoodName = (TextView) findViewById(R.id.TV_LocalFoodName);
+		tvLocalPronun = (TextView) findViewById(R.id.TV_LocalPronun);
+		tvLocalDesc = (TextView) findViewById(R.id.TV_LocalDesc);
 		tvUserFoodName = (TextView) findViewById(R.id.TV_UserFoodName);
 		tvUserDesc = (TextView) findViewById(R.id.TV_UserDesc);
 		ivFavorite = (ImageView) findViewById(R.id.IV_Favorite);
@@ -188,6 +189,7 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 	private void updateFoodInfoViews(Food food) {
 		tvLocalFoodName.setText(food.getLocalFoodName());
 		tvLocalPronun.setText(food.getLocalPronun());
+		tvLocalDesc.setText(food.getLocalDescription());
 		tvUserFoodName.setText(food.getUserFoodName());
 		tvUserDesc.setText(food.getUserDescription());
 		if (food.getFavorite()) {

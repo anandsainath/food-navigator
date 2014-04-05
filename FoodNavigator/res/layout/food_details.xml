@@ -17,7 +17,7 @@
             android:src="@drawable/mimosa_2" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodName"
+            android:id="@+id/TV_LocalFoodName"
             style="@style/Text.24"
             android:layout_below="@id/IV_FoodImage"
             android:layout_centerHorizontal="true"
@@ -29,16 +29,16 @@
             android:id="@+id/IV_Favorite"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_alignBottom="@id/TV_FoodName"
+            android:layout_alignBottom="@id/TV_LocalFoodName"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="18dp"
-            android:layout_toRightOf="@id/TV_FoodName"
+            android:layout_toRightOf="@id/TV_LocalFoodName"
             android:src="@drawable/ic_favorite_off" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodLocalPronun"
+            android:id="@+id/TV_LocalPronun"
             style="@style/Text.20"
-            android:layout_below="@id/TV_FoodName"
+            android:layout_below="@id/TV_LocalFoodName"
             android:layout_centerHorizontal="true"
             android:layout_margin="8dp"
             android:text="mi-mos-uh"
@@ -48,16 +48,16 @@
             android:id="@+id/IV_TTS"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_alignBottom="@id/TV_FoodLocalPronun"
+            android:layout_alignBottom="@id/TV_LocalPronun"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@id/TV_FoodLocalPronun"
+            android:layout_toRightOf="@id/TV_LocalPronun"
             android:src="@drawable/ic_action_volume_up_black" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodLocalDesc"
+            android:id="@+id/TV_LocalDesc"
             style="@style/Text.14"
-            android:layout_below="@id/TV_FoodLocalPronun"
+            android:layout_below="@id/TV_LocalPronun"
             android:layout_centerHorizontal="true"
             android:layout_margin="16dp"
             android:text="Orange juice and champagne"
@@ -66,7 +66,7 @@
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
             android:id="@+id/TV_UserFoodName"
             style="@style/Text.20"
-            android:layout_below="@id/TV_FoodLocalDesc"
+            android:layout_below="@id/TV_LocalDesc"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:text="संतरे का रस और शैम्पेन"
