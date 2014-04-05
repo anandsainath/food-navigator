@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private final Context context;
 	private SQLiteDatabase db;
 
-	private static final int DATABASE_VERSION = 9;
+	private static final int DATABASE_VERSION = 13;
 
 	private static final String DATABASE_NAME = "food_navigator.db";
 	private static final String DATABASE_PATH = "/data/data/edu.gatech.hci.foodnavigator/databases/";
@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	public static DatabaseHelper getInstance(Context context) {
 		Log.d(TAG, "~~~ In getInstance");
-
+		
 		// Use the application context, which will ensure that you
 		// don't accidentally leak an Activity's context.
 		// See this article for more information: http://bit.ly/6LRzfx
@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			} catch (SQLException sqle) {
 				throw sqle;
 			}
-			Log.d(TAG, " ~~~ Creating DB - In getInstance");
+			Log.d(TAG, " ~~~ Creating  - In getInstance");
 		} else {
 			Log.d(TAG, " ~~~~~ DB instance exists already");
 		}
@@ -233,7 +233,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+		Log.d(TAG, "@@@ DB onUpgrade old v: " + oldVersion + "  @@ new v: "
+				+ newVersion);
+		
+		sInstance.context.deleteDatabase(DATABASE_NAME);
+		sInstance = null;
+		this.getInstance(context);
+		
 	}
 
 	/* ~~~~~~~~~ DB METHODS ~~~~~~~~~~~ */
@@ -266,7 +272,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			break;
 		}
 
-		String query = "SELECT F._id, E.name, E.pronunciation, L.name, L.description FROM "
+		String query = "SELECT F._id, E.name, E.pronunciation, E.description, L.name, L.description FROM "
 				+ TBL_FOOD_INDEX
 				+ " AS F JOIN "
 				+ TBL_DESC_EN
@@ -280,10 +286,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		if (cursor.moveToFirst()) {
 			do {
 				food.setId(Integer.parseInt(cursor.getString(0)));
-				food.setEnName(cursor.getString(1));
-				food.setEnPronunciation(cursor.getString(2));
-				food.setLocalName(cursor.getString(3));
-				food.setLocalDescription(cursor.getString(4));
+				food.setLocalFoodName(cursor.getString(1));
+				food.setLocalPronun(cursor.getString(2));
+				food.setLocalDescription(cursor.getString(3));
+				food.setUserFoodName(cursor.getString(4));
+				food.setUserDescription(cursor.getString(5));
 
 			} while (cursor.moveToNext());
 		}

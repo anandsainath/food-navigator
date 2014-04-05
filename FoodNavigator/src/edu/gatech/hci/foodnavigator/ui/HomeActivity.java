@@ -11,6 +11,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import edu.gatech.hci.foodnavigator.BaseActivity;
 import edu.gatech.hci.foodnavigator.R;
+import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
 import edu.gatech.hci.foodnavigator.menu.AppMainMenu;
 import edu.gatech.hci.foodnavigator.widget.CustomTextView;
 
@@ -18,6 +19,7 @@ public class HomeActivity extends BaseActivity implements
 		AppHomeFragment.Callbacks {
 
 	CustomTextView TV_PageTitle;
+	private DatabaseHelper db;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class HomeActivity extends BaseActivity implements
 		if (!isLanguageSet()) {
 			showLanguagePreferenceDialog();
 		}
+		
+		db = DatabaseHelper.getInstance(getApplicationContext());
+		db.getReadableDatabase();
 
 		TV_PageTitle = (CustomTextView) findViewById(R.id.TV_PageHeader);
 		TV_PageTitle.setText(R.string.home_page_title);

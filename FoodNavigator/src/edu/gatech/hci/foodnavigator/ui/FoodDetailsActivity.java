@@ -37,7 +37,8 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 	private DatabaseHelper db;
 
 	/* views to be updated */
-	private TextView tvEnName, tvEnPronunciation, tvLocalName, tvLocalDesc;
+	private TextView tvLocalFoodName, tvLocalPronun, tvUserFoodName,
+			tvUserDesc;
 	private ImageView ivFavorite;
 	private Food food;
 
@@ -49,10 +50,10 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 
 		IV_TTS = (ImageView) findViewById(R.id.IV_TTS);
 
-		tvEnName = (TextView) findViewById(R.id.TV_FoodName);
-		tvEnPronunciation = (TextView) findViewById(R.id.TV_FoodPronunciation);
-		tvLocalName = (TextView) findViewById(R.id.TV_FoodMeaning1);
-		tvLocalDesc = (TextView) findViewById(R.id.TV_FoodMeaning2);
+		tvLocalFoodName = (TextView) findViewById(R.id.TV_FoodName);
+		tvLocalPronun = (TextView) findViewById(R.id.TV_FoodLocalPronun);
+		tvUserFoodName = (TextView) findViewById(R.id.TV_UserFoodName);
+		tvUserDesc = (TextView) findViewById(R.id.TV_UserDesc);
 		ivFavorite = (ImageView) findViewById(R.id.IV_Favorite);
 
 		/* grab foodId passed in the bundle */
@@ -93,8 +94,8 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 			public void onClick(View v) {
 				try {
 					String name = "Mimosa";
-					if (!food.getEnName().equals("")) {
-						name = food.getEnName();
+					if (!food.getLocalFoodName().equals("")) {
+						name = food.getLocalFoodName();
 					}
 					TTSEngine.speak(name, TextToSpeech.QUEUE_FLUSH, null);
 				} catch (Exception E) {
@@ -185,10 +186,10 @@ public class FoodDetailsActivity extends BaseActivity implements OnInitListener 
 
 	// update contents displayed based on retrieved food info
 	private void updateFoodInfoViews(Food food) {
-		tvEnName.setText(food.getEnName());
-		tvEnPronunciation.setText(food.getEnPronunciation());
-		tvLocalName.setText(food.getLocalName());
-		tvLocalDesc.setText(food.getLocalDescription());
+		tvLocalFoodName.setText(food.getLocalFoodName());
+		tvLocalPronun.setText(food.getLocalPronun());
+		tvUserFoodName.setText(food.getUserFoodName());
+		tvUserDesc.setText(food.getUserDescription());
 		if (food.getFavorite()) {
 			ivFavorite.setImageDrawable(getResources().getDrawable(
 					R.drawable.ic_favorite_on));

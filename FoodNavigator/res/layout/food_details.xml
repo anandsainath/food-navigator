@@ -36,7 +36,7 @@
             android:src="@drawable/ic_favorite_off" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodPronunciation"
+            android:id="@+id/TV_FoodLocalPronun"
             style="@style/Text.20"
             android:layout_below="@id/TV_FoodName"
             android:layout_centerHorizontal="true"
@@ -48,25 +48,34 @@
             android:id="@+id/IV_TTS"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_alignBottom="@id/TV_FoodPronunciation"
+            android:layout_alignBottom="@id/TV_FoodLocalPronun"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@id/TV_FoodPronunciation"
+            android:layout_toRightOf="@id/TV_FoodLocalPronun"
             android:src="@drawable/ic_action_volume_up_black" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodMeaning1"
-            style="@style/Text.20"
-            android:layout_below="@id/TV_FoodPronunciation"
+            android:id="@+id/TV_FoodLocalDesc"
+            style="@style/Text.14"
+            android:layout_below="@id/TV_FoodLocalPronun"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_margin="16dp"
+            android:text="Orange juice and champagne"
+            android:textColor="@color/swatch_10" />
+
+        <edu.gatech.hci.foodnavigator.widget.CustomTextView
+            android:id="@+id/TV_UserFoodName"
+            style="@style/Text.20"
+            android:layout_below="@id/TV_FoodLocalDesc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
             android:text="संतरे का रस और शैम्पेन"
             android:textColor="@color/swatch_10" />
 
         <edu.gatech.hci.foodnavigator.widget.CustomTextView
-            android:id="@+id/TV_FoodMeaning2"
-            style="@style/Text.18"
-            android:layout_below="@id/TV_FoodMeaning1"
+            android:id="@+id/TV_UserDesc"
+            style="@style/Text.14"
+            android:layout_below="@id/TV_UserFoodName"
             android:layout_centerHorizontal="true"
             android:layout_margin="16dp"
             android:text="Orange juice and champagne"
