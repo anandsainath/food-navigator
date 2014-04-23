@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -67,6 +68,7 @@ public class Search extends SherlockActivity {
 		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 			// handles a click on a search suggestion; launches activity to show
 			// word
+			Log.d(" ### Search ### ", intent.getData().toString());
 			goToCard(intent.getData());
 		} else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			// handles a search query

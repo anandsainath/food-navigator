@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.widget.Toast;
 import edu.gatech.hci.foodnavigator.db.DatabaseHelper;
 import edu.gatech.hci.foodnavigator.utilities.Functions;
 
@@ -17,7 +18,8 @@ public class SuggestionProvider extends ContentProvider {
 	private static final String AUTHORITY = "edu.gatech.hci.foodnavigator.search.SuggestionProvider";
 	private static final String FOOD_LIST_PATH = "food";
 
-	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + FOOD_LIST_PATH);
+	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
+			+ "/" + FOOD_LIST_PATH);
 
 	private static final int SEARCH_FOOD = 0;
 	private static final int GET_FOOD = 1;
@@ -36,8 +38,10 @@ public class SuggestionProvider extends ContentProvider {
 		matcher.addURI(AUTHORITY, FOOD_LIST_PATH, SEARCH_FOOD);
 		matcher.addURI(AUTHORITY, FOOD_LIST_PATH + "/#", GET_FOOD);
 		// to get suggestions...
-		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_QUERY, SEARCH_SUGGEST);
-		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_QUERY + "/*", SEARCH_SUGGEST);
+		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_QUERY,
+				SEARCH_SUGGEST);
+		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_QUERY + "/*",
+				SEARCH_SUGGEST);
 
 		/*
 		 * The following are unused in this implementation, but if we include
@@ -47,8 +51,10 @@ public class SuggestionProvider extends ContentProvider {
 		 * case, the following Uris would be provided and we would return a
 		 * cursor with a single item representing the refreshed suggestion data.
 		 */
-		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_SHORTCUT, REFRESH_SHORTCUT);
-		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_SHORTCUT + "/*", REFRESH_SHORTCUT);
+		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_SHORTCUT,
+				REFRESH_SHORTCUT);
+		matcher.addURI(AUTHORITY, SearchManager.SUGGEST_URI_PATH_SHORTCUT
+				+ "/*", REFRESH_SHORTCUT);
 		return matcher;
 	}
 
@@ -66,21 +72,28 @@ public class SuggestionProvider extends ContentProvider {
 	 * All other arguments are ignored.
 	 */
 	@Override
-	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+	public Cursor query(Uri uri, String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
 
 		// Use the UriMatcher to see what kind of query we have and format the
 		// db query accordingly
 		switch (sURIMatcher.match(uri)) {
 		case SEARCH_SUGGEST:
 			if (selectionArgs == null) {
-				throw new IllegalArgumentException("selectionArgs must be provided for the Uri: " + uri);
+				throw new IllegalArgumentException(
+						"selectionArgs must be provided for the Uri: " + uri);
 			}
 			return getSuggestions(selectionArgs[0]);
 		case SEARCH_FOOD:
-			if (selectionArgs == null) {
-				throw new IllegalArgumentException("selectionArgs must be provided for the Uri: " + uri);
-			}
-			return search(selectionArgs[0]);
+			Toast.makeText(this.getContext(),
+					"Search function is under maintenance...",
+					Toast.LENGTH_SHORT).show();
+//			if (selectionArgs == null) {
+//				throw new IllegalArgumentException(
+//						"selectionArgs must be provided for the Uri: " + uri);
+//			}
+//			return search(selectionArgs[0]);
+			return null;
 		case GET_FOOD:
 			return getWord(uri);
 		case REFRESH_SHORTCUT:
@@ -90,23 +103,34 @@ public class SuggestionProvider extends ContentProvider {
 		}
 	}
 
+	// added to test
+	// public Cursor getWordMatches(String query, String[] columns) {
+	// String selection = "WORD" + " MATCH ?";
+	// String[] selectionArgs = new String[] {query+"*"};
+	//
+	// return query(selection, selectionArgs, columns);
+	// }
+
 	private Cursor getSuggestions(String query) {
 		Functions.d(query + " getSuggestions");
 		query = query.toLowerCase();
-		String[] columns = new String[] { BaseColumns._ID, DatabaseHelper.COL_FOOD_NAME };
+		String[] columns = new String[] { BaseColumns._ID,
+				DatabaseHelper.COL_FOOD_NAME };
 		return mDB.getFoodMatches(query, columns);
 	}
 
 	private Cursor search(String query) {
 		Functions.d(query + " search");
 		query = query.toLowerCase();
-		String[] columns = new String[] { BaseColumns._ID, DatabaseHelper.COL_FOOD_NAME };
+		String[] columns = new String[] { BaseColumns._ID,
+				DatabaseHelper.COL_FOOD_NAME };
 		return mDB.getFoodMatches(query, columns);
 	}
 
 	private Cursor getWord(Uri uri) {
 		String rowId = uri.getLastPathSegment();
-		String[] columns = new String[] { BaseColumns._ID, DatabaseHelper.COL_FOOD_NAME };
+		String[] columns = new String[] { BaseColumns._ID,
+				DatabaseHelper.COL_FOOD_NAME };
 		return mDB.getFood(rowId, columns);
 	}
 
@@ -121,8 +145,10 @@ public class SuggestionProvider extends ContentProvider {
 		 * provided with the suggestion query.
 		 */
 		String rowId = uri.getLastPathSegment();
-		String[] columns = new String[] { BaseColumns._ID, DatabaseHelper.COL_FOOD_NAME,
-				SearchManager.SUGGEST_COLUMN_SHORTCUT_ID, SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID };
+		String[] columns = new String[] { BaseColumns._ID,
+				DatabaseHelper.COL_FOOD_NAME,
+				SearchManager.SUGGEST_COLUMN_SHORTCUT_ID,
+				SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID };
 
 		return mDB.getFood(rowId, columns);
 	}
@@ -145,7 +171,8 @@ public class SuggestionProvider extends ContentProvider {
 	}
 
 	@Override
-	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+	public int update(Uri uri, ContentValues values, String selection,
+			String[] selectionArgs) {
 		throw new UnsupportedOperationException();
 	}
 
